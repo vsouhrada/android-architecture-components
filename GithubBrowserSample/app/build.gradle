@@ -15,6 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'jacoco'
 android {
     compileSdkVersion 25
@@ -105,6 +106,7 @@ dependencies {
     androidTestCompile("android.arch.core:core-testing:$arch_version", {
     })
     androidTestCompile "org.mockito:mockito-android:$mockito_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
 task fullCoverageReport(type: JacocoReport) {
@@ -132,4 +134,7 @@ task fullCoverageReport(type: JacocoReport) {
             "jacoco/testDebugUnitTest.exec",
             "outputs/code-coverage/connected/*coverage.ec"
     ])
+}
+repositories {
+    mavenCentral()
 }
